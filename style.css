@@ -62,14 +62,14 @@ body {
 
 .main-section {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que as colunas se ajustem */
 }
 
 .column {
-    flex: 1 1 220px; /* Flex-grow, flex-shrink, flex-basis */
+    flex: 0 0 calc(20% - 20px); /* Ajuste as colunas para 20% menos a margem */
     margin: 10px;
-    min-width: 220px; /* Largura mínima */
+    min-width: 200px; /* Largura mínima */
+    box-sizing: border-box; /* Inclui padding e border no cálculo de largura */
 }
 
 .category {
@@ -122,6 +122,11 @@ body {
         width: 100%;
         max-width: none; /* Remove a largura máxima em telas menores */
     }
+
+    /* Ajusta para duas colunas em telas menores */
+    .column {
+        flex: 0 0 calc(50% - 20px); /* Cada coluna ocupa 50% em telas menores */
+    }
 }
 
 @media (max-width: 480px) {
@@ -135,5 +140,10 @@ body {
 
     .category {
         font-size: 1rem; /* Ajusta o tamanho da categoria em telas pequenas */
+    }
+
+    /* Cada coluna ocupa 100% em telas muito pequenas */
+    .column {
+        flex: 0 0 100%; 
     }
 }
